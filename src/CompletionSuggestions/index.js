@@ -57,6 +57,7 @@ export default function (addModifier, Entry, suggestionsThemeKey) {
         });
       }
     };
+    //setEditorState
 
     componentWillUnmount = () => {
       this.props.callbacks.onChange = undefined;
