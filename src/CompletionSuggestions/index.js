@@ -284,7 +284,7 @@ export default function (addModifier, Entry, suggestionsThemeKey) {
                 id={ `completion-option-${this.key}-${index}` }
                 theme={ theme }
               />
-            )).toJS()
+            ))
           }
         </div>
       );
