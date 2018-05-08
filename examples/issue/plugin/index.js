@@ -17,6 +17,12 @@ const createIssueSuggestionPlugin = (config = {}) => {
     addIssueModifier,
     IssueEntry,
     'issueSuggestions',
+    [],
+    {
+      blockClassName:'tester',  // Block className
+      trueLink:false,           // Requires react-router
+      linkPrefix:'/'            // Link prefix path
+    }
   );
   const configWithTheme = {
     theme: defaultTheme,
