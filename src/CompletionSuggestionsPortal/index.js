@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class CompletionSuggestionsPortal extends Component {
+
+  state = {
+    options: {
+      trueLinks: false,
+      linkPrefix: '/',
+    }
+  }
 
   componentWillMount() {
     this.props.store.register(this.props.offsetKey);
@@ -27,11 +35,27 @@ export default class CompletionSuggestionsPortal extends Component {
     );
   }
 
+  showHashTag = () => {
+    const { options, children } = this.props;
+    const config = {...this.state.options,...options};
+    const { trueLinks, blockClassName, linkPrefix } = config;
+
+    if (!trueLinks)
+      return (
+        <span ref="searchPortal" className={`${blockClassName || ''}`}>
+          { children }
+        </span>
+      );
+
+    else
+      return (
+        <Link to={`${linkPrefix}${children}`} ref="searchPortal" className={`${blockClassName || ''}`}>
+          { children }
+        </Link>
+      );
+  }
+
   render() {
-    return (
-      <span className={this.key} ref="searchPortal">
-        { this.props.children }
-      </span>
-    );
+    return this.showHashTag();
   }
 }
